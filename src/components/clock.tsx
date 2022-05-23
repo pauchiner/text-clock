@@ -1,4 +1,4 @@
-import Text from './clock';
+import Text from './clock-text';
 import React, { useState, useEffect } from 'react';
 import { VStack, HStack } from 'native-base';
 
