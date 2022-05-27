@@ -1,26 +1,48 @@
-import React from 'react';
-import { Text } from 'native-base';
+import React, { useEffect } from "react";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  interpolateColor,
+} from "react-native-reanimated";
+import {
+  Text,
+} from "native-base";
 
 interface Props {
   isActive: boolean;
   text: string;
 }
 
-export default function Word(props: Props) {
+const Word = (props: Props) => {
+  const progress = useSharedValue(30);
+
+  const AnimatedText = Animated.createAnimatedComponent(Text);
+
+  const animatedTextStyle = useAnimatedStyle(() => {
+    progress.value = withSpring(props.isActive ? 1 : 0.3);
+    return {
+      opacity: progress.value,
+    };
+  });
+
   return (
-    <Text
-      fontFamily='body'
+    <AnimatedText
+      {...props}
+      style={animatedTextStyle}
+      fontFamily="body"
       fontWeight={600}
-      fontSize='3xl'
+      fontSize="3xl"
       padding={3}
-      opacity={props.isActive ? 100 : 30}
     >
       {props.text}
-    </Text>
+    </AnimatedText>
   );
-}
+};
 
 Word.defaultProps = {
   isActive: false,
-  text: '???',
+  text: "???",
 };
+
+export default Word;
