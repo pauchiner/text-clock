@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-  interpolateColor,
 } from "react-native-reanimated";
 import {
   Text,

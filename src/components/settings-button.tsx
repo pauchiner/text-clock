@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Stack, Icon, IconButton } from "native-base";
+import { Stack, Icon, IconButton, useColorModeValue } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
 interface Props {
@@ -19,7 +19,7 @@ export default function SettingsButton(props: Props) {
     >
       <IconButton
         onPress={props.onPress}
-        icon={<Icon size={10} as={MaterialIcons} name="settings" />}
+        icon={<Icon color={useColorModeValue("dark.50", "primary.300")} size={10} as={MaterialIcons} name="settings" />}
       />
     </Stack>
   );
