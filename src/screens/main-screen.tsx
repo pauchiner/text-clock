@@ -11,11 +11,7 @@ import Clock from "../components/clock";
 import Background from '../components/background';
 import SettingsBottomSheet from "../components/bottom-sheet";
 
-interface Props {
-  navigation: any;
-}
-
-export default function MainScreen(props: Props) {
+export default function MainScreen() {
   return (
     <Background
       bg={useColorModeValue("primary.50", "primary.900")}
