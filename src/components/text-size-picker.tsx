@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { MaterialIcons } from "@expo/vector-icons";
 import {
   Text,
   Box,
   Icon,
   useColorModeValue,
   Divider,
-  IconButton,
   Pressable,
+  Radio,
+  Modal,
 } from "native-base";
-import { MaterialIcons } from "@expo/vector-icons";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -16,7 +17,7 @@ import Animated, {
 } from "react-native-reanimated";
 
 const TextSizePicker = () => {
-  const [fontSize, setFontSize] = useState(25);
+  const [showModal, setShowModal] = useState(false);
   const [pressed, setPressed] = useState(false);
   const progress = useSharedValue(0);
 
@@ -35,6 +36,25 @@ const TextSizePicker = () => {
 
   return (
     <>
+      <Modal
+        isOpen={showModal}
+        onClose={() => {
+          setShowModal(false);
+        }}
+      >
+        <Modal.Content maxWidth="80%">
+          <Modal.CloseButton />
+          <Modal.Header>Choose the text size</Modal.Header>
+          <Modal.Body>
+            <Radio.Group name="text size picker">
+              <Radio value="little">Little</Radio>
+              <Radio value="medium">Medium</Radio>
+              <Radio value="big">Bigger</Radio>
+              <Radio value="extra-big">Extra Big</Radio>
+            </Radio.Group>
+          </Modal.Body>
+        </Modal.Content>
+      </Modal>
       <Box alignItems="center" flexDirection="row">
         <Icon
           color={useColorModeValue("dark.50", "light.50")}
@@ -51,7 +71,12 @@ const TextSizePicker = () => {
         >
           Text size
         </Text>
-        <Pressable padding={4}>
+        <Pressable
+          padding={4}
+          onPress={() => {
+            setShowModal(true);
+          }}
+        >
           <Text fontSize={18} fontWeight={600}>
             Medium
           </Text>

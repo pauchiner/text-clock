@@ -1,5 +1,5 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": ["expo/tsconfig.base", "plugin:react-hooks/recommended"],
   "compilerOptions": {
     "strict": true,
     "allowSyntheticDefaultImports": true,

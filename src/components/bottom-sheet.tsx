@@ -8,10 +8,14 @@ import Masthead from "./bottom-sheet-masthead";
 import BottomSheetBackground from "../components/bottom-sheet-background";
 
 import TextSizePicker from "./text-size-picker";
-import ColorModeToggle from "./color-mode-toggle";
 import ColorThemePicker from "./color-theme-picker";
 
-const SettingsBottomSheet = () => {
+interface Props {
+  setColorTheme: any;
+  colorTheme: string;
+}
+
+const SettingsBottomSheet = (props: Props) => {
   const [isActive, setIsActive] = useState(false);
 
   const sheetRef = useRef<BottomSheet>(null);
@@ -43,7 +47,7 @@ const SettingsBottomSheet = () => {
           flex={1}
         >
           <Masthead />
-          <ColorThemePicker />
+          <ColorThemePicker colorTheme={props.colorTheme} setColorTheme={props.setColorTheme}/>
           <TextSizePicker />
         </Background>
       </BottomSheet>

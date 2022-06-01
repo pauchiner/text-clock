@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { VStack, HStack, useColorModeValue } from "native-base";
+import React from "react";
+import { VStack, HStack } from "native-base";
 
 import Text from "./clock-text";
 import compareArrays from "../utils/compare-arrays";

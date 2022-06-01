@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Box, Pressable } from "native-base";
 import Animated, {
   useSharedValue,
@@ -8,20 +9,30 @@ import Animated, {
 } from "react-native-reanimated";
 
 interface Props {
-  actualColor: boolean;
+  setColorTheme: any;
+  colorTheme: string;
+  colorChart: string;
   color: string;
-  onPress: any;
 }
 
-const ColorItem = (props: Props) => {
+const ColorItem = ({setColorTheme, colorTheme, colorChart, color }: Props) => {
   const [pressed, setPressed] = useState(false);
   const progress = useSharedValue(0);
 
   const AnimatedBox = Animated.createAnimatedComponent(Box);
 
+  const saveTheme = async (value: string) => {
+    try {
+      await AsyncStorage.setItem("colorTheme", value);
+    } catch (e) {
+      //Catch a Storage error
+    }
+  };
+
   useEffect(() => {
-    if(props.actualColor) setPressed(true);
-  });
+    //Check if the actual Color item is the main theme.
+    if(colorTheme == colorChart) setPressed(true);
+  }); 
 
   const animatedBoxStyle = useAnimatedStyle(() => {
     progress.value = withTiming(pressed ? 1 : 0);
@@ -40,15 +51,13 @@ const ColorItem = (props: Props) => {
       onPressIn={() => {
         setPressed(true);
       }}
-      onPress={props.onPress}
-      onPressOut={() => {
-        setTimeout(() => {
-          setPressed(false);
-        }, 300);
+      onPress={() => {
+        saveTheme(colorChart);
+        setColorTheme(colorChart);
       }}
     >
       <AnimatedBox
-        bg={props.color}
+        bg={color}
         rounded="md"
         width={10}
         height={10}
@@ -60,9 +69,9 @@ const ColorItem = (props: Props) => {
 };
 
 ColorItem.defaultProps = {
-  actualColor: false,
+  setColorTheme: null,
+  colorChart: "primary",
   color: "primary.400",
-  onPress: null,
-}
+};
 
 export default ColorItem;
