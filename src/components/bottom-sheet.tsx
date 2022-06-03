@@ -9,6 +9,7 @@ import BottomSheetBackground from "../components/bottom-sheet-background";
 
 import TextWeightPicker from "./text-weight-picker";
 import ColorThemePicker from "./color-theme-picker";
+import PrivacyPolicyButton from "./privacy-policy-button";
 import RestoreSettingsButton from "./restore-settings-button";
 
 interface Props {
@@ -52,6 +53,7 @@ const SettingsBottomSheet = (props: Props) => {
           <Masthead colorTheme={props.colorTheme}/>
           <ColorThemePicker colorTheme={props.colorTheme} setColorTheme={props.setColorTheme}/>
           <TextWeightPicker colorTheme={props.colorTheme} textWeight={props.textWeight} setTextWeight={props.setTextWeight}/>
+          <PrivacyPolicyButton />
           <RestoreSettingsButton setColorTheme={props.setColorTheme} setTextWeight={props.setTextWeight}/>
         </Background>
       </BottomSheet>

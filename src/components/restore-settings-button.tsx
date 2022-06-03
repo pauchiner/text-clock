@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Alert } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { MaterialIcons } from "@expo/vector-icons";
+import React, { useState } from 'react';
+import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { MaterialIcons } from '@expo/vector-icons';
 import {
   Pressable,
   Divider,
@@ -10,13 +10,13 @@ import {
   useTheme,
   themeTools,
   useColorModeValue,
-} from "native-base";
+} from 'native-base';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
   interpolateColor,
-} from "react-native-reanimated";
+} from 'react-native-reanimated';
 
 interface Props {
   setTextWeight: any;
@@ -29,7 +29,7 @@ const RestoreSettingsButton = ({ setColorTheme, setTextWeight }: Props) => {
   const theme = useTheme();
   const hexColorIcon = themeTools.getColor(
     theme,
-    useColorModeValue("dark.50", "light.50")
+    useColorModeValue('dark.50', 'light.50')
   );
 
   const AnimatedIcon = Animated.createAnimatedComponent(Icon);
@@ -40,11 +40,11 @@ const RestoreSettingsButton = ({ setColorTheme, setTextWeight }: Props) => {
       color: interpolateColor(
         progress.value,
         [1, 0],
-        [hexColorIcon, "#e11d48"]
+        [hexColorIcon, '#e11d48']
       ),
       transform: [
         {
-          rotate: progress.value * 360 + "deg",
+          rotate: progress.value * 360 + 'deg',
         },
       ],
     };
@@ -53,35 +53,35 @@ const RestoreSettingsButton = ({ setColorTheme, setTextWeight }: Props) => {
   const restoreSettings = async () => {
     try {
       setRestore(false);
-      await AsyncStorage.setItem("colorTheme", "primary");
-      await AsyncStorage.setItem("textWeight", "3xl");
+      await AsyncStorage.setItem('colorTheme', 'primary');
+      await AsyncStorage.setItem('textWeight', '400');
       setRestore(true);
     } catch {
       //Catch a Storage error
     }
     setTimeout(() => {
-      setColorTheme("primary");
-      setTextWeight("400");
+      setColorTheme('primary');
+      setTextWeight('400');
     }, 400);
   };
 
   const restoreSettingsAlert = () =>
-    Alert.alert("Are you sure?", "All configurations will be restored.", [
+    Alert.alert('Are you sure?', 'All configurations will be restored.', [
       {
-        text: "Yes",
+        text: 'Yes',
         onPress: restoreSettings,
-        style: "destructive",
+        style: 'destructive',
       },
       {
-        text: "No",
+        text: 'No',
       },
     ]);
 
   return (
     <>
       <Pressable
-        alignItems="center"
-        flexDirection="row"
+        alignItems='center'
+        flexDirection='row'
         onPress={restoreSettingsAlert}
       >
         <AnimatedIcon
@@ -89,15 +89,15 @@ const RestoreSettingsButton = ({ setColorTheme, setTextWeight }: Props) => {
           style={animatedIconStyle}
           margin={2}
           size={22}
-          name="refresh"
+          name='refresh'
         />
         <Text
           paddingTop={4}
           paddingBottom={4}
           flex={2}
           fontWeight={600}
-          fontSize="md"
-          color={useColorModeValue("dark.50", "light.50")}
+          fontSize='md'
+          color={useColorModeValue('dark.50', 'light.50')}
         >
           Restore settings
         </Text>
