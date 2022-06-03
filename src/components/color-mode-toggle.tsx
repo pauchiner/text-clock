@@ -12,7 +12,7 @@ import {
   useColorMode,
 } from "native-base";
 
-const ColorModeToggle = ({...props}: any) => {
+const ColorModeToggle = ({colorTheme, ...props}: any) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const [toggled, setToggled] = useState(colorMode === "dark");
   const progress = useSharedValue(1);
@@ -43,11 +43,11 @@ const ColorModeToggle = ({...props}: any) => {
             shadow={1}
             width={20}
             height={10}
-            bg={"primary.600"}
+            bg={colorTheme + ".600"}
             rounded="md"
           >
             <AnimatedBox
-              bg={"primary.400"}
+              bg={colorTheme + ".400"}
               shadow={2}
               bottom={1}
               rounded="md"
@@ -56,7 +56,7 @@ const ColorModeToggle = ({...props}: any) => {
               style={animatedBoxStyle}
             >
               <Icon
-                color={toggled ? "purple.700" : "yellow.200"}
+                color={toggled ? colorTheme + ".900" : "light.50"}
                 flex={1}
                 alignSelf="center"
                 top={2}

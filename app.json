@@ -2,15 +2,21 @@
   "expo": {
     "name": "text-clock",
     "slug": "text-clock",
-    "version": "0.0.85",
+    "version": "0.0.87",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pauchiner.textclock"
+    },
+    "android": {
+      "package": "com.pauchiner.textclock"
     }
   }
 }

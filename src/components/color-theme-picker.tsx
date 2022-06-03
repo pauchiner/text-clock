@@ -28,10 +28,10 @@ const ColorThemePicker = (props: Props) => {
           Color theme
         </Text>
         <Box flexDirection='row' padding={3}>
-          <ColorItem setColorTheme={props.setColorTheme} colorTheme={props.colorTheme} colorChart={"primary"} color='primary.400' />
-          <ColorItem setColorTheme={props.setColorTheme} colorTheme={props.colorTheme} colorChart={"green"} color='green.400' />
-          <ColorItem setColorTheme={props.setColorTheme} colorTheme={props.colorTheme} colorChart={"teal"} color='teal.400' />
-          <ColorItem setColorTheme={props.setColorTheme} colorTheme={props.colorTheme} colorChart={"orange"} color='orange.400' />
+          <ColorItem setColorTheme={props.setColorTheme} colorTheme={props.colorTheme} colorChart={"primary"} color={useColorModeValue("primary.50", "primary.800")} />
+          <ColorItem setColorTheme={props.setColorTheme} colorTheme={props.colorTheme} colorChart={"green"} color={useColorModeValue("green.50", "green.800")} />
+          <ColorItem setColorTheme={props.setColorTheme} colorTheme={props.colorTheme} colorChart={"blue"} color={useColorModeValue("blue.50", "blue.800")} />
+          <ColorItem setColorTheme={props.setColorTheme} colorTheme={props.colorTheme} colorChart={"orange"} color={useColorModeValue("orange.50", "orange.800")} />
         </Box>
       </Box>
       <Divider />

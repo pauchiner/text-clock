@@ -10,6 +10,7 @@ import {
 
 interface Props {
   isActive: boolean;
+  textWeight: string;
   text: string;
 }
 
@@ -30,8 +31,8 @@ const Word = (props: Props) => {
       {...props}
       style={animatedTextStyle}
       fontFamily="body"
-      fontWeight={600}
-      fontSize="3xl"
+      fontWeight={props.textWeight}
+      fontSize="4xl"
       padding={3}
     >
       {props.text}

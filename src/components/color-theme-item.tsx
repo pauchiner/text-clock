@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Box, Pressable } from "native-base";
 import Animated, {
@@ -48,10 +48,8 @@ const ColorItem = ({setColorTheme, colorTheme, colorChart, color }: Props) => {
 
   return (
     <Pressable
-      onPressIn={() => {
-        setPressed(true);
-      }}
       onPress={() => {
+        setPressed(true);
         saveTheme(colorChart);
         setColorTheme(colorChart);
       }}
