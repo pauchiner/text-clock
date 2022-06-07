@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Pressable, Box, Text } from "native-base";
 import Animated, {
@@ -37,7 +38,17 @@ const TextWeightModalItem = (props: Props) => {
     try {
       await AsyncStorage.setItem("textWeight", value);
       setSelected(true);
-    } catch {}
+    } catch {
+      Alert.alert(
+      "Storage Error",
+      "We couldn't save your settings",
+      [
+        {
+          text: "okey"
+        }
+      ]
+      )
+    }
   };
 
   const getActualTextWeight = async () => {
@@ -47,7 +58,17 @@ const TextWeightModalItem = (props: Props) => {
         setSelected(true);
         props.setTextWeight(value);
       }
-    } catch {}
+    } catch {
+      Alert.alert(
+      "Storage Error",
+      "We couldn't load your settings",
+      [
+        {
+          text: "okey"
+        }
+      ]
+      )
+      }
   };
 
   useEffect(() => {

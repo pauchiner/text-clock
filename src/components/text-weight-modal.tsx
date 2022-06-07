@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-native-modal";
 import { Divider, Box, Text, useColorModeValue } from "native-base";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  withSpring,
+  withTiming,
+  Easing,
+  FadeOut,
 } from "react-native-reanimated";
 
 import Background from "./background";
@@ -24,7 +26,10 @@ const TextWeightModal = (props: Props) => {
   const AnimatedBox = Animated.createAnimatedComponent(Box);
 
   const animatedBoxStyle = useAnimatedStyle(() => {
-    progress.value = withSpring(props.isOpen ? 1 : 1.2);
+    progress.value = withTiming(props.isOpen ? 1 : 1.2, {
+      duration: 300,
+      easing: Easing.bezier(0.44, 0.04, 0.5, 0.94),
+    });
     return {
       transform: [{
         scale: progress.value,
@@ -44,7 +49,7 @@ const TextWeightModal = (props: Props) => {
         props.setIsOpen(false);
       }}
     >
-    <AnimatedBox alignSelf="center" width="55%" style={animatedBoxStyle}>
+    <AnimatedBox alignSelf="center" width="55%" style={animatedBoxStyle} exiting={FadeOut}>
       <Background
         bg={useColorModeValue("muted.100", "muted.700")}
         rounded="xl"

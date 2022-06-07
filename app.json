@@ -2,7 +2,7 @@
   "expo": {
     "name": "text-clock",
     "slug": "text-clock",
-    "version": "0.0.87",
+    "version": "0.97",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "updates": {

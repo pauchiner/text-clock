@@ -4,7 +4,7 @@ import { VStack, HStack } from "native-base";
 import Text from "./clock-text";
 import compareArrays from "../utils/compare-arrays";
 
-export default class Words extends React.Component {
+export default class Clock extends React.Component {
   textWeight: string;
   timer: any;
   state: any;

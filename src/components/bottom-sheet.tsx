@@ -12,6 +12,7 @@ import ColorThemePicker from "./color-theme-picker";
 import PrivacyPolicyButton from "./privacy-policy-button";
 import RestoreSettingsButton from "./restore-settings-button";
 import RateAppButton from './rate-app-button';
+import Credits from "./credits";
 
 interface Props {
   setTextWeight: any;
@@ -57,6 +58,7 @@ const SettingsBottomSheet = (props: Props) => {
           <PrivacyPolicyButton />
           <RateAppButton />
           <RestoreSettingsButton setColorTheme={props.setColorTheme} setTextWeight={props.setTextWeight}/>
+          <Credits colorTheme={props.colorTheme}/>
         </Background>
       </BottomSheet>
     </>

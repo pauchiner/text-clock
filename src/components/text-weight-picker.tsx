@@ -22,13 +22,13 @@ const TextWeightPicker = (props: Props) => {
 
   const textWeightName = () => {
     switch (props.textWeight) {
-      case "200":
+      case "300":
        return "Thin";
       case "400":
        return "Regular";
       case "600":
        return "Medium";
-      case "200":
+      case "700":
        return "Bold";
     }
   }

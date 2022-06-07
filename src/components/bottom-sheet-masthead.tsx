@@ -18,7 +18,7 @@ const Masthead = ({colorTheme}: any) => {
         <Icon size={35} color={useColorModeValue("dark.50", colorTheme + ".500")} margin={2} as={MaterialIcons} name="access-time"/>
         <Box flexDirection="column">
          <Text fontWeight={700} fontSize="xl">Text O'Clock</Text>
-          <Text fontWeight={300} fontStyle="italic" fontSize="md">Version 0.87</Text>
+          <Text fontWeight={300} fontStyle="italic" fontSize="md">Version 0.97</Text>
         </Box>
       </Box>
       <ColorModeToggle colorTheme={colorTheme} flex={1} marginRight={2} />

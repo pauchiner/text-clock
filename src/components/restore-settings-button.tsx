@@ -4,7 +4,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from '@expo/vector-icons';
 import {
   Pressable,
-  Divider,
   Icon,
   Text,
   useTheme,
@@ -57,7 +56,15 @@ const RestoreSettingsButton = ({ setColorTheme, setTextWeight }: Props) => {
       await AsyncStorage.setItem('textWeight', '400');
       setRestore(true);
     } catch {
-      //Catch a Storage error
+      Alert.alert(
+      "Storage Error",
+      "We couldn't restore your settings",
+      [
+        {
+          text: "okey"
+        }
+      ]
+      )
     }
     setTimeout(() => {
       setColorTheme('primary');
@@ -102,7 +109,6 @@ const RestoreSettingsButton = ({ setColorTheme, setTextWeight }: Props) => {
           Restore settings
         </Text>
       </Pressable>
-      <Divider />
     </>
   );
 };
