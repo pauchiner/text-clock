@@ -1,32 +1,24 @@
 import React from "react";
-import { Alert, Linking } from "react-native";
+import { Linking } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import {
   Pressable,
+  Text,
   Box,
   Icon,
-  Text,
   Divider,
   useColorModeValue,
 } from "native-base";
 
-const PrivacyPolicyButton = () => {
-
-    const openLinkAlert = () =>
-    Alert.alert("Warning", "This will redirect you to the web browser.", [
-      {
-        text: "Continue",
-        onPress: () => Linking.openURL("https://sites.google.com/view/textoclockprivacitypolicity/p%C3%A1gina-principal"),
-      },
-      {
-        text: "Cancel",
-        style: "destructive"
-      },
-    ]);
-
+const RateAppButton = () => {
+  const onPress = () => {
+    Linking.openURL(
+      "https://play.google.com/store/apps/details?id=com.pauchiner.textclock"
+    );
+  };
 
   return (
-    <Pressable onPress={openLinkAlert}>
+    <Pressable onPress={onPress}>
       <Box alignItems="center" padding={2} flexDirection="row">
         <Icon
           color={useColorModeValue("dark.50", "light.50")}
@@ -35,7 +27,7 @@ const PrivacyPolicyButton = () => {
           marginBottom={2}
           size={22}
           as={MaterialIcons}
-          name="article"
+          name="star"
         />
         <Text
           flex={2}
@@ -44,7 +36,7 @@ const PrivacyPolicyButton = () => {
           fontSize="md"
           color={useColorModeValue("dark.50", "light.50")}
         >
-          Privacy Policy
+          Rate us
         </Text>
       </Box>
       <Divider />
@@ -52,4 +44,4 @@ const PrivacyPolicyButton = () => {
   );
 };
 
-export default PrivacyPolicyButton;
+export default RateAppButton;
