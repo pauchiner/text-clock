@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useMemo, useState } from "react";
 import { useColorModeValue } from "native-base";
-import BottomSheet  from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 
 import Background from "./background";
 import SettingsButton from "./settings-button";
@@ -11,7 +11,7 @@ import TextWeightPicker from "./text-weight-picker";
 import ColorThemePicker from "./color-theme-picker";
 import PrivacyPolicyButton from "./privacy-policy-button";
 import RestoreSettingsButton from "./restore-settings-button";
-import RateAppButton from './rate-app-button';
+import RateAppButton from "./rate-app-button";
 import Credits from "./credits";
 
 interface Props {
@@ -32,6 +32,7 @@ const SettingsBottomSheet = (props: Props) => {
     sheetRef.current?.snapToIndex(index);
     setIsActive(true);
   }, []);
+
   const handleClosePress = useCallback(() => {
     sheetRef.current?.close();
     setIsActive(false);
@@ -42,23 +43,54 @@ const SettingsBottomSheet = (props: Props) => {
     handleClosePress();
   };
 
+  const renderBackdrop = useCallback(
+    (props) => (
+      <BottomSheetBackdrop
+        {...props}
+        pressBehavior="close"
+        disappearsOnIndex={-1}
+        appearsOnIndex={1}
+      />
+    ),
+    []
+  );
+
   return (
     <>
-      <SettingsButton colorTheme={props.colorTheme} onPress={settingsButtonOnPress} />
-      <BottomSheet ref={sheetRef} snapPoints={snapPoints}  backgroundComponent={BottomSheetBackground}> 
+      <SettingsButton
+        colorTheme={props.colorTheme}
+        onPress={settingsButtonOnPress}
+      />
+      <BottomSheet
+        index={-1}
+        ref={sheetRef}
+        snapPoints={snapPoints}
+        backdropComponent={renderBackdrop}
+        backgroundComponent={BottomSheetBackground}
+      >
         <Background
           rounded="2xl"
           bg={useColorModeValue("muted.50", "muted.800")}
           padding={5}
           flex={1}
         >
-          <Masthead colorTheme={props.colorTheme}/>
-          <ColorThemePicker colorTheme={props.colorTheme} setColorTheme={props.setColorTheme}/>
-          <TextWeightPicker colorTheme={props.colorTheme} textWeight={props.textWeight} setTextWeight={props.setTextWeight}/>
+          <Masthead colorTheme={props.colorTheme} />
+          <ColorThemePicker
+            colorTheme={props.colorTheme}
+            setColorTheme={props.setColorTheme}
+          />
+          <TextWeightPicker
+            colorTheme={props.colorTheme}
+            textWeight={props.textWeight}
+            setTextWeight={props.setTextWeight}
+          />
           <PrivacyPolicyButton />
           <RateAppButton />
-          <RestoreSettingsButton setColorTheme={props.setColorTheme} setTextWeight={props.setTextWeight}/>
-          <Credits colorTheme={props.colorTheme}/>
+          <RestoreSettingsButton
+            setColorTheme={props.setColorTheme}
+            setTextWeight={props.setTextWeight}
+          />
+          <Credits colorTheme={props.colorTheme} />
         </Background>
       </BottomSheet>
     </>

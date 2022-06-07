@@ -1,19 +1,7 @@
 import React from "react";
 import { Linking } from "react-native";
 import { Svg, Path } from "react-native-svg";
-import {
-  Text,
-  Pressable,
-  Box,
-  useTheme,
-  themeTools,
-  useColorModeValue,
-} from "native-base";
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withSpring,
-} from "react-native-reanimated";
+import { Text, Pressable, Box, useTheme, themeTools } from "native-base";
 
 interface Props {
   colorTheme: string;
