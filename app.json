@@ -1,8 +1,14 @@
 {
   "expo": {
-    "name": "text-clock",
+    "name": "Clock",
+    "icon": "./src/assets/expo-icon.png",
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "slug": "text-clock",
-    "version": "0.98",
+    "version": "0.99",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "updates": {
@@ -16,6 +22,10 @@
       "bundleIdentifier": "com.pauchiner.textclock"
     },
     "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#fff",
+        "foregroundImage": "./src/assets/icon.png"
+      },
       "package": "com.pauchiner.textclock"
     }
   }

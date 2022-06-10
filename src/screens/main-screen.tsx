@@ -17,6 +17,7 @@ export default function MainScreen() {
       const value = await AsyncStorage.getItem('colorTheme');
       if (value !== null && value != colorTheme) {
         setColorTheme(value);
+        return value;
       }
     } catch {
       Alert.alert('Storage Error', "We couldn't load your settings", [
@@ -43,6 +44,7 @@ export default function MainScreen() {
   };
 
   useEffect(() => {
+    console.log(colorTheme);
     getColorTheme();
     getTextWeight();
   });

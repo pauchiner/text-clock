@@ -1,4 +1,5 @@
 import React from "react";
+import {moderateScale} from "react-native-size-matters";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -32,7 +33,7 @@ const Word = (props: Props) => {
       style={animatedTextStyle}
       fontFamily="body"
       fontWeight={props.textWeight}
-      fontSize="4xl"
+      fontSize={moderateScale(30, 1)}
       padding={3}
     >
       {props.text}

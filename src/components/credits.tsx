@@ -16,12 +16,12 @@ const Credits = ({ colorTheme }: Props) => {
       bottom={8}
       flex={1}
       flexDirection="row"
-      justifyContent="space-around"
+      justifyContent="center"
     >
       <Text bottom={2} fontSize="xl" fontWeight={300}>
-        Pau García Chiner.®
+        Pau García Chiner ®
       </Text>
-      <Box flexDirection="row">
+      <Box paddingLeft={2} flexDirection="row">
         <Pressable
           margin={2}
           onPress={() => {

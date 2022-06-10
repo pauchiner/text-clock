@@ -38,7 +38,6 @@ const ColorModeToggle = ({colorTheme, ...props}: any) => {
   return (
         <Pressable {...props} margin={1} onPress={setColorMode}>
           <Box
-            right={4}
             margin={3}
             shadow={1}
             width={20}

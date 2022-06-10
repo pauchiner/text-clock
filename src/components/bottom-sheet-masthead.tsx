@@ -8,12 +8,13 @@ const Masthead = ({ colorTheme }: any) => {
     <Box
       bg={useColorModeValue("muted.100", "muted.900")}
       flexDirection="row"
+      justifyContent="space-between"
       shadow={2}
       padding={2}
       rounded="2xl"
       marginBottom={3}
     >
-      <Box flex={3} flexDirection="row" alignItems="center">
+      <Box flexDirection="row" alignItems="center">
         <Icon
           size={35}
           color={useColorModeValue("dark.50", colorTheme + ".500")}
@@ -26,11 +27,11 @@ const Masthead = ({ colorTheme }: any) => {
             Text O'Clock
           </Text>
           <Text fontWeight={300} fontStyle="italic" fontSize="md">
-            Version 0.98
+            Version 0.99
           </Text>
         </Box>
       </Box>
-      <ColorModeToggle colorTheme={colorTheme} flex={1} marginRight={2} />
+      <ColorModeToggle colorTheme={colorTheme} />
     </Box>
   );
 };

@@ -38,28 +38,30 @@ const SettingsBottomSheet = (props: Props) => {
     setIsActive(false);
   }, []);
 
-  const settingsButtonOnPress = () => {
-    if (!isActive) handleSnapPress(0);
-    handleClosePress();
-  };
-
   const renderBackdrop = useCallback(
     (props) => (
       <BottomSheetBackdrop
         {...props}
         pressBehavior="close"
         disappearsOnIndex={-1}
-        appearsOnIndex={1}
+        appearsOnIndex={0}
       />
     ),
     []
   );
 
+  const onPressSettings = () => {
+    if(isActive) {
+      handleClosePress();
+    }
+    handleSnapPress(0);
+  }
+
   return (
     <>
       <SettingsButton
         colorTheme={props.colorTheme}
-        onPress={settingsButtonOnPress}
+        onPress={onPressSettings}
       />
       <BottomSheet
         index={-1}
@@ -74,7 +76,7 @@ const SettingsBottomSheet = (props: Props) => {
           padding={5}
           flex={1}
         >
-          <Masthead colorTheme={props.colorTheme} />
+          <Masthead colorTheme={props.colorTheme}/>
           <ColorThemePicker
             colorTheme={props.colorTheme}
             setColorTheme={props.setColorTheme}

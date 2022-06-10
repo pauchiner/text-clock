@@ -1,5 +1,6 @@
 import React from "react";
 import { VStack, HStack } from "native-base";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Text from "./clock-text";
 import compareArrays from "../utils/compare-arrays";
@@ -206,6 +207,7 @@ export default class Clock extends React.Component {
 
   render() {
     return (
+      <SafeAreaView>
       <VStack alignItems={"center"} width="100%">
         <HStack>
           <Text textWeight={this.textWeight} isActive={this.state.isActive[0]} text="IT'S" />
@@ -246,6 +248,7 @@ export default class Clock extends React.Component {
           <Text textWeight={this.textWeight} isActive={this.state.isActive[21]} text="O'CLOCK" />
         </HStack>
       </VStack>
+      </SafeAreaView>
     );
   }
 }

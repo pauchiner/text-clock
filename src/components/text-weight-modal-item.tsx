@@ -38,6 +38,7 @@ const TextWeightModalItem = (props: Props) => {
     try {
       await AsyncStorage.setItem("textWeight", value);
       setSelected(true);
+      console.log(props.colorTheme);
     } catch {
       Alert.alert(
       "Storage Error",
