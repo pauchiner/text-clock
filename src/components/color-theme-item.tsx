@@ -1,22 +1,21 @@
-import { Alert } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Box, Pressable } from 'native-base';
+import { Alert } from "react-native";
+import React, { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Box, Pressable } from "native-base";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
   interpolateColor,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
 
 interface Props {
-  setColorTheme: any;
-  colorTheme: string;
+  reloadSettings: any;
   colorChart: string;
   color: string;
 }
 
-const ColorItem = ({ setColorTheme, colorTheme, colorChart, color }: Props) => {
+const ColorItem = ({ reloadSettings, colorChart, color }: Props) => {
   const [pressed, setPressed] = useState(false);
   const progress = useSharedValue(0);
 
@@ -24,11 +23,11 @@ const ColorItem = ({ setColorTheme, colorTheme, colorChart, color }: Props) => {
 
   const saveTheme = async (value: string) => {
     try {
-      await AsyncStorage.setItem('colorTheme', value);
+      await AsyncStorage.setItem("colorTheme", value);
     } catch {
-      Alert.alert('Storage Error', "We couldn't save your settings", [
+      Alert.alert("Storage Error", "We couldn't save your settings", [
         {
-          text: 'okey',
+          text: "okey",
         },
       ]);
     }
@@ -36,8 +35,8 @@ const ColorItem = ({ setColorTheme, colorTheme, colorChart, color }: Props) => {
 
   useEffect(() => {
     //Check if the actual Color item is the main theme.
-    if (colorTheme == colorChart) setPressed(true);
-  });
+    if (globalThis.colorTheme == colorChart) setPressed(true);
+  }, [globalThis.colorTheme]);
 
   const animatedBoxStyle = useAnimatedStyle(() => {
     progress.value = withTiming(pressed ? 1 : 0);
@@ -46,7 +45,7 @@ const ColorItem = ({ setColorTheme, colorTheme, colorChart, color }: Props) => {
       borderColor: interpolateColor(
         progress.value,
         [0, 1],
-        ['#ffffffff', '#00000030']
+        ["#ffffffff", "#00000030"]
       ),
     };
   });
@@ -56,12 +55,13 @@ const ColorItem = ({ setColorTheme, colorTheme, colorChart, color }: Props) => {
       onPress={() => {
         setPressed(true);
         saveTheme(colorChart);
-        setColorTheme(colorChart);
+        globalThis.colorTheme = colorChart;
+        reloadSettings();
       }}
     >
       <AnimatedBox
         bg={color}
-        rounded='md'
+        rounded="md"
         width={10}
         height={10}
         marginRight={2}
@@ -73,8 +73,8 @@ const ColorItem = ({ setColorTheme, colorTheme, colorChart, color }: Props) => {
 
 ColorItem.defaultProps = {
   setColorTheme: null,
-  colorChart: 'primary',
-  color: 'primary.400',
+  colorChart: "primary",
+  color: "primary.400",
 };
 
 export default ColorItem;

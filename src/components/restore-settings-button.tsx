@@ -17,12 +17,7 @@ import Animated, {
   interpolateColor,
 } from "react-native-reanimated";
 
-interface Props {
-  setTextWeight: any;
-  setColorTheme: any;
-}
-
-const RestoreSettingsButton = ({ setColorTheme, setTextWeight }: Props) => {
+const RestoreSettingsButton = () => {
   const [restore, setRestore] = useState(false);
   const progress = useSharedValue(0);
   const theme = useTheme();
@@ -63,8 +58,8 @@ const RestoreSettingsButton = ({ setColorTheme, setTextWeight }: Props) => {
       ]);
     }
     setTimeout(() => {
-      setColorTheme("primary");
-      setTextWeight("400");
+      globalThis.colorTheme = "primary";
+      globalThis.textWeight = "400";
     }, 400);
   };
 

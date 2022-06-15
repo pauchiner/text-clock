@@ -13,16 +13,14 @@ import Background from "./background";
 import TextWeightModalItem from "./text-weight-modal-item";
 
 interface Props {
-  textWeight: string;
-  setTextWeight: any;
   isOpen: boolean;
   setIsOpen: any;
-  colorTheme: string;
+  reloadSettings: any;
 }
 
 const TextWeightModal = (props: Props) => {
-  const progress = useSharedValue(1);
-  
+  const progress = useSharedValue(1.2);
+
   const AnimatedBox = Animated.createAnimatedComponent(Box);
 
   const animatedBoxStyle = useAnimatedStyle(() => {
@@ -31,11 +29,13 @@ const TextWeightModal = (props: Props) => {
       easing: Easing.bezier(0.44, 0.04, 0.5, 0.94),
     });
     return {
-      transform: [{
-        scale: progress.value,
-      }]
-    }
-  })
+      transform: [
+        {
+          scale: progress.value,
+        },
+      ],
+    };
+  });
 
   return (
     <Modal
@@ -43,29 +43,47 @@ const TextWeightModal = (props: Props) => {
       backdropOpacity={0.55}
       animationIn="fadeIn"
       animationInTiming={250}
-      animationOut="fadeOut"
-      animationOutTiming={190}
       onBackdropPress={() => {
         props.setIsOpen(false);
       }}
     >
-    <AnimatedBox alignSelf="center" width="55%" style={animatedBoxStyle} exiting={FadeOut}>
-      <Background
-        bg={useColorModeValue("muted.100", "muted.700")}
-        rounded="xl"
-        padding={2}
-        justifyContent="center"
-        shadow={1}
+      <AnimatedBox
+        alignSelf="center"
+        width="55%"
+        style={animatedBoxStyle}
+        exiting={FadeOut}
       >
-        <Text alignSelf="center" fontSize="xl" fontWeight={600} margin={1}>
-          Choose a size
-        </Text>
-        <Divider />
-        <TextWeightModalItem textWeight={props.textWeight} setTextWeight={props.setTextWeight} colorTheme={props.colorTheme} text="Light" weight="300" />
-        <TextWeightModalItem textWeight={props.textWeight} setTextWeight={props.setTextWeight} colorTheme={props.colorTheme} text="Regular" weight="400" />
-        <TextWeightModalItem textWeight={props.textWeight} setTextWeight={props.setTextWeight} colorTheme={props.colorTheme} text="Medium" weight="600" />
-        <TextWeightModalItem textWeight={props.textWeight} setTextWeight={props.setTextWeight} colorTheme={props.colorTheme} text="Bold" weight="700" />
-      </Background>
+        <Box>
+          <Background
+            bg={useColorModeValue("muted.100", "muted.700")}
+            rounded="lg"
+          >
+            <Text alignSelf="center" fontSize="xl" fontWeight={600} margin={1}>
+              Choose a size
+            </Text>
+            <Divider />
+            <TextWeightModalItem
+              reloadSettings={props.reloadSettings}
+              text="Light"
+              weight="300"
+            />
+            <TextWeightModalItem
+              reloadSettings={props.reloadSettings}
+              text="Regular"
+              weight="400"
+            />
+            <TextWeightModalItem
+              reloadSettings={props.reloadSettings}
+              text="Medium"
+              weight="600"
+            />
+            <TextWeightModalItem
+              reloadSettings={props.reloadSettings}
+              text="Bold"
+              weight="700"
+            />
+          </Background>
+        </Box>
       </AnimatedBox>
     </Modal>
   );

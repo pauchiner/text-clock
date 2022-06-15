@@ -5,14 +5,9 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from "react-native-reanimated";
-import {
-  Icon,
-  Box,
-  Pressable,
-  useColorMode,
-} from "native-base";
+import { Icon, Box, Pressable, useColorMode } from "native-base";
 
-const ColorModeToggle = ({colorTheme, ...props}: any) => {
+const ColorModeToggle = ({ ...props }: any) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const [toggled, setToggled] = useState(colorMode === "dark");
   const progress = useSharedValue(1);
@@ -36,36 +31,36 @@ const ColorModeToggle = ({colorTheme, ...props}: any) => {
   };
 
   return (
-        <Pressable {...props} margin={1} onPress={setColorMode}>
-          <Box
-            margin={3}
-            shadow={1}
-            width={20}
-            height={10}
-            bg={colorTheme + ".600"}
-            rounded="md"
-          >
-            <AnimatedBox
-              bg={colorTheme + ".400"}
-              shadow={2}
-              bottom={1}
-              rounded="md"
-              width={12}
-              height={12}
-              style={animatedBoxStyle}
-            >
-              <Icon
-                color={toggled ? colorTheme + ".900" : "light.50"}
-                flex={1}
-                alignSelf="center"
-                top={2}
-                size={8}
-                as={MaterialIcons}
-                name={toggled ? "nightlight-round" : "wb-sunny"}
-              />
-            </AnimatedBox>
-          </Box>
-        </Pressable>
+    <Pressable {...props} margin={1} onPress={setColorMode}>
+      <Box
+        margin={3}
+        shadow={1}
+        width={20}
+        height={10}
+        bg={globalThis.colorTheme + ".600"}
+        rounded="md"
+      >
+        <AnimatedBox
+          bg={globalThis.colorTheme + ".400"}
+          shadow={2}
+          bottom={1}
+          rounded="md"
+          width={12}
+          height={12}
+          style={animatedBoxStyle}
+        >
+          <Icon
+            color={toggled ? globalThis.colorTheme + ".900" : "light.50"}
+            flex={1}
+            alignSelf="center"
+            top={2}
+            size={8}
+            as={MaterialIcons}
+            name={toggled ? "nightlight-round" : "wb-sunny"}
+          />
+        </AnimatedBox>
+      </Box>
+    </Pressable>
   );
 };
 

@@ -11,36 +11,28 @@ import {
 
 import TextWeightModal from "./text-weight-modal";
 
-interface Props {
-  textWeight: string;
-  setTextWeight: any;
-  colorTheme: string;
-}
-
-const TextWeightPicker = (props: Props) => {
+const TextWeightPicker = ({ reloadSettings }: any) => {
   const [showModal, setShowModal] = useState(false);
 
   const textWeightName = () => {
-    switch (props.textWeight) {
+    switch (globalThis.textWeight) {
       case "300":
-       return "Thin";
+        return "Thin";
       case "400":
-       return "Regular";
+        return "Regular";
       case "600":
-       return "Medium";
+        return "Medium";
       case "700":
-       return "Bold";
+        return "Bold";
     }
-  }
+  };
 
   return (
     <>
       <TextWeightModal
         isOpen={showModal}
         setIsOpen={setShowModal}
-        textWeight={props.textWeight}
-        setTextWeight={props.setTextWeight}
-        colorTheme={props.colorTheme}
+        reloadSettings={reloadSettings}
       />
       <Box alignItems="center" flexDirection="row">
         <Icon

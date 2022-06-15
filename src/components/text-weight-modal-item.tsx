@@ -10,12 +10,10 @@ import Animated, {
 } from "react-native-reanimated";
 
 interface Props {
-  colorTheme: string;
-  textWeight: string;
-  setTextWeight: any;
-  selected: boolean;
   text: string;
   weight: string;
+  selected: boolean;
+  reloadSettings: any;
 }
 
 const TextWeightModalItem = (props: Props) => {
@@ -38,43 +36,20 @@ const TextWeightModalItem = (props: Props) => {
     try {
       await AsyncStorage.setItem("textWeight", value);
       setSelected(true);
-      console.log(props.colorTheme);
+      globalThis.textWeight = value;
     } catch {
-      Alert.alert(
-      "Storage Error",
-      "We couldn't save your settings",
-      [
+      Alert.alert("Storage Error", "We couldn't save your settings", [
         {
-          text: "okey"
-        }
-      ]
-      )
+          text: "okey",
+        },
+      ]);
     }
   };
 
-  const getActualTextWeight = async () => {
-    try {
-      const value = await AsyncStorage.getItem("textWeight");
-      if (value == props.weight) {
-        setSelected(true);
-        props.setTextWeight(value);
-      }
-    } catch {
-      Alert.alert(
-      "Storage Error",
-      "We couldn't load your settings",
-      [
-        {
-          text: "okey"
-        }
-      ]
-      )
-      }
-  };
-
   useEffect(() => {
-    getActualTextWeight();
-  });
+    if(globalThis.textWeight === props.weight) setSelected(true);
+  }, []);
+
 
   return (
     <Pressable
@@ -82,10 +57,11 @@ const TextWeightModalItem = (props: Props) => {
       margin={2}
       onPress={() => {
         saveTextWeight(props.weight);
+        setTimeout(() => {props.reloadSettings()}, 400);
       }}
     >
       <AnimatedBox
-        borderColor={props.colorTheme + ".500"}
+        borderColor={globalThis.colorTheme + ".500"}
         marginLeft={1}
         marginRight={2}
         rounded="md"

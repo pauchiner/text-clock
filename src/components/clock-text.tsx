@@ -11,12 +11,11 @@ import {
 
 interface Props {
   isActive: boolean;
-  textWeight: string;
   text: string;
 }
 
 const Word = (props: Props) => {
-  const progress = useSharedValue(30);
+  const progress = useSharedValue(100);
 
   const AnimatedText = Animated.createAnimatedComponent(Text);
 
@@ -32,7 +31,7 @@ const Word = (props: Props) => {
       {...props}
       style={animatedTextStyle}
       fontFamily="body"
-      fontWeight={props.textWeight}
+      fontWeight={globalThis.textWeight}
       fontSize={moderateScale(30, 1)}
       padding={3}
     >

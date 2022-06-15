@@ -3,7 +3,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Text, Box, Icon, useColorModeValue } from "native-base";
 import ColorModeToggle from "./color-mode-toggle";
 
-const Masthead = ({ colorTheme }: any) => {
+const Masthead = () => {
   return (
     <Box
       bg={useColorModeValue("muted.100", "muted.900")}
@@ -17,7 +17,7 @@ const Masthead = ({ colorTheme }: any) => {
       <Box flexDirection="row" alignItems="center">
         <Icon
           size={35}
-          color={useColorModeValue("dark.50", colorTheme + ".500")}
+          color={useColorModeValue("dark.50", globalThis.colorTheme + ".500")}
           margin={2}
           as={MaterialIcons}
           name="access-time"
@@ -27,11 +27,11 @@ const Masthead = ({ colorTheme }: any) => {
             Text O'Clock
           </Text>
           <Text fontWeight={300} fontStyle="italic" fontSize="md">
-            Version 0.99
+            Version 1.00
           </Text>
         </Box>
       </Box>
-      <ColorModeToggle colorTheme={colorTheme} />
+      <ColorModeToggle />
     </Box>
   );
 };

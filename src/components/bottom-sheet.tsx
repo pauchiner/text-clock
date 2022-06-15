@@ -14,14 +14,7 @@ import RestoreSettingsButton from "./restore-settings-button";
 import RateAppButton from "./rate-app-button";
 import Credits from "./credits";
 
-interface Props {
-  setTextWeight: any;
-  textWeight: string;
-  setColorTheme: any;
-  colorTheme: string;
-}
-
-const SettingsBottomSheet = (props: Props) => {
+const SettingsBottomSheet = ({reloadSettings}: any) => {
   const [isActive, setIsActive] = useState(false);
 
   const sheetRef = useRef<BottomSheet>(null);
@@ -42,7 +35,10 @@ const SettingsBottomSheet = (props: Props) => {
     (props) => (
       <BottomSheetBackdrop
         {...props}
-        pressBehavior="close"
+        enableTouchThrough={true}
+        pressBehavior={() => {
+          handleClosePress();
+        }}
         disappearsOnIndex={-1}
         appearsOnIndex={0}
       />
@@ -51,18 +47,15 @@ const SettingsBottomSheet = (props: Props) => {
   );
 
   const onPressSettings = () => {
-    if(isActive) {
+    if (isActive) {
       handleClosePress();
     }
     handleSnapPress(0);
-  }
+  };
 
   return (
     <>
-      <SettingsButton
-        colorTheme={props.colorTheme}
-        onPress={onPressSettings}
-      />
+      <SettingsButton onPress={onPressSettings} />
       <BottomSheet
         index={-1}
         ref={sheetRef}
@@ -71,28 +64,18 @@ const SettingsBottomSheet = (props: Props) => {
         backgroundComponent={BottomSheetBackground}
       >
         <Background
-          rounded="2xl"
           bg={useColorModeValue("muted.50", "muted.800")}
-          padding={5}
+          rounded="2xl"
           flex={1}
+          padding={5}
         >
-          <Masthead colorTheme={props.colorTheme}/>
-          <ColorThemePicker
-            colorTheme={props.colorTheme}
-            setColorTheme={props.setColorTheme}
-          />
-          <TextWeightPicker
-            colorTheme={props.colorTheme}
-            textWeight={props.textWeight}
-            setTextWeight={props.setTextWeight}
-          />
+          <Masthead />
+          <ColorThemePicker reloadSettings={reloadSettings}/>
+          <TextWeightPicker reloadSettings={reloadSettings}/>
           <PrivacyPolicyButton />
           <RateAppButton />
-          <RestoreSettingsButton
-            setColorTheme={props.setColorTheme}
-            setTextWeight={props.setTextWeight}
-          />
-          <Credits colorTheme={props.colorTheme} />
+          <RestoreSettingsButton />
+          <Credits />
         </Background>
       </BottomSheet>
     </>

@@ -1,18 +1,16 @@
 import React from "react";
-import { VStack, HStack } from "native-base";
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { VStack, HStack, Button } from "native-base";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import Text from "./clock-text";
 import compareArrays from "../utils/compare-arrays";
 
 export default class Clock extends React.Component {
-  textWeight: string;
   timer: any;
   state: any;
 
   constructor(props: any) {
     super(props);
-    this.textWeight = props.textWeight;
     this.state = {
       isActive: [false],
     };
@@ -208,46 +206,46 @@ export default class Clock extends React.Component {
   render() {
     return (
       <SafeAreaView>
-      <VStack alignItems={"center"} width="100%">
-        <HStack>
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[0]} text="IT'S" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[1]} text="HALF" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[2]} text="TEN" />
-        </HStack>
-        <HStack>
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[3]} text="QUARTER" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[4]} text="TWENTY" />
-        </HStack>
-        <HStack>
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[5]} text="FIVE" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[6]} text="MINUTES" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[7]} text="TO" />
-        </HStack>
-        <HStack>
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[8]} text="PAST" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[9]} text="ONE" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[10]} text="TWO" />
-        </HStack>
-        <HStack>
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[11]} text="THREE" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[12]} text="FOUR" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[13]} text="FIVE" />
-        </HStack>
-        <HStack>
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[14]} text="SIX" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[15]} text="SEVEN" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[16]} text="EIGHT" />
-        </HStack>
-        <HStack>
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[17]} text="NINE" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[18]} text="TEN" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[19]} text="ELEVEN" />
-        </HStack>
-        <HStack>
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[20]} text="TWELVE" />
-          <Text textWeight={this.textWeight} isActive={this.state.isActive[21]} text="O'CLOCK" />
-        </HStack>
-      </VStack>
+        <VStack alignItems="center" width="100%">
+          <HStack>
+            <Text isActive={this.state.isActive[0]} text="IT'S" />
+            <Text isActive={this.state.isActive[1]} text="HALF" />
+            <Text isActive={this.state.isActive[2]} text="TEN" />
+          </HStack>
+          <HStack>
+            <Text isActive={this.state.isActive[3]} text="QUARTER" />
+            <Text isActive={this.state.isActive[4]} text="TWENTY" />
+          </HStack>
+          <HStack>
+            <Text isActive={this.state.isActive[5]} text="FIVE" />
+            <Text isActive={this.state.isActive[6]} text="MINUTES" />
+            <Text isActive={this.state.isActive[7]} text="TO" />
+          </HStack>
+          <HStack>
+            <Text isActive={this.state.isActive[8]} text="PAST" />
+            <Text isActive={this.state.isActive[9]} text="ONE" />
+            <Text isActive={this.state.isActive[10]} text="TWO" />
+          </HStack>
+          <HStack>
+            <Text isActive={this.state.isActive[11]} text="THREE" />
+            <Text isActive={this.state.isActive[12]} text="FOUR" />
+            <Text isActive={this.state.isActive[13]} text="FIVE" />
+          </HStack>
+          <HStack>
+            <Text isActive={this.state.isActive[14]} text="SIX" />
+            <Text isActive={this.state.isActive[15]} text="SEVEN" />
+            <Text isActive={this.state.isActive[16]} text="EIGHT" />
+          </HStack>
+          <HStack>
+            <Text isActive={this.state.isActive[17]} text="NINE" />
+            <Text isActive={this.state.isActive[18]} text="TEN" />
+            <Text isActive={this.state.isActive[19]} text="ELEVEN" />
+          </HStack>
+          <HStack>
+            <Text isActive={this.state.isActive[20]} text="TWELVE" />
+            <Text isActive={this.state.isActive[21]} text="O'CLOCK" />
+          </HStack>
+        </VStack>
       </SafeAreaView>
     );
   }
