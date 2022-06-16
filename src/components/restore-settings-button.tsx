@@ -8,6 +8,7 @@ import {
   Text,
   useTheme,
   themeTools,
+  useColorMode,
   useColorModeValue,
 } from "native-base";
 import Animated, {
@@ -17,7 +18,8 @@ import Animated, {
   interpolateColor,
 } from "react-native-reanimated";
 
-const RestoreSettingsButton = () => {
+const RestoreSettingsButton = ({reloadSettings}: any) => {
+  const {colorMode, toggleColorMode} = useColorMode();
   const [restore, setRestore] = useState(false);
   const progress = useSharedValue(0);
   const theme = useTheme();
@@ -57,10 +59,9 @@ const RestoreSettingsButton = () => {
         },
       ]);
     }
-    setTimeout(() => {
-      globalThis.colorTheme = "primary";
-      globalThis.textWeight = "400";
-    }, 400);
+    globalThis.colorTheme = "primary";
+    globalThis.textWeight = "400";
+    reloadSettings();
   };
 
   const restoreSettingsAlert = () =>

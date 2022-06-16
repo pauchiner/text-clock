@@ -74,7 +74,7 @@ const SettingsBottomSheet = ({reloadSettings}: any) => {
           <TextWeightPicker reloadSettings={reloadSettings}/>
           <PrivacyPolicyButton />
           <RateAppButton />
-          <RestoreSettingsButton />
+          <RestoreSettingsButton reloadSettings={reloadSettings}/>
           <Credits />
         </Background>
       </BottomSheet>

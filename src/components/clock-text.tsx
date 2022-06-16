@@ -32,7 +32,7 @@ const Word = (props: Props) => {
       style={animatedTextStyle}
       fontFamily="body"
       fontWeight={globalThis.textWeight}
-      fontSize={moderateScale(30, 1)}
+      fontSize={moderateScale(30, 0.5)}
       padding={3}
     >
       {props.text}
