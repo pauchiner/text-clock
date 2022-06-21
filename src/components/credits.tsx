@@ -9,7 +9,7 @@ const Credits = () => {
   return (
     <Box
       alignItems="flex-end"
-      bottom={8}
+      bottom={2}
       flex={1}
       flexDirection="row"
       justifyContent="center"

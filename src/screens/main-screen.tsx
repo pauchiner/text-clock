@@ -1,8 +1,8 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
 import { Center, Box } from "native-base";
 
 import Clock from "../components/clock";
+import AppStatusBar from "../components/status-bar"
 import SettingsBottomSheet from "../components/bottom-sheet";
 
 export default class MainScreen extends React.Component {
@@ -23,7 +23,7 @@ export default class MainScreen extends React.Component {
         flex={1}
         padding={5}
       >
-        <StatusBar animated={true} style={"auto"} />
+        <AppStatusBar/>
         <Center flex={1}>
           <Clock />
         </Center>

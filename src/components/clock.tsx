@@ -33,11 +33,8 @@ export default class Clock extends React.Component {
     var data = Array(22);
     var date = new Date();
     //Set Hours and minutes from the date
-    var hours = parseFloat(
-      date
-        .toLocaleString("en", { hour: "numeric", hour12: true })
-        .substring(0, 2)
-    );
+    var hours = date.getHours();
+    if(hours > 12) hours = hours - 12;
     var minutes = date.getMinutes();
     //Show "IT'S" value always.
     data[0] = true;
