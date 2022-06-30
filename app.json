@@ -27,9 +27,6 @@
         "foregroundImage": "./src/assets/icon.png"
       },
       "package": "com.pauchiner.textclock"
-    },
-    "androidNavigationBar": {
-      "visible" : "false"
     }
   }
 }
