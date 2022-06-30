@@ -31,7 +31,7 @@ const ColorModeToggle = ({ ...props }: any) => {
   };
 
   return (
-    <Pressable {...props} margin={1} onPress={setColorMode}>
+    <Pressable accessibilityLabel="change color mode" {...props} margin={1} onPress={setColorMode}>
       <Box
         margin={3}
         shadow={1}

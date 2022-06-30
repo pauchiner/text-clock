@@ -1,5 +1,5 @@
 import React from "react";
-import { VStack, HStack, Button } from "native-base";
+import { VStack, HStack} from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import Text from "./clock-text";
@@ -202,7 +202,7 @@ export default class Clock extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{marginRight: 20, marginLeft: 20}}>
         <VStack alignItems="center" width="100%">
           <HStack>
             <Text isActive={this.state.isActive[0]} text="IT'S" />

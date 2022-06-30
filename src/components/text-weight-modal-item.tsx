@@ -47,17 +47,19 @@ const TextWeightModalItem = (props: Props) => {
   };
 
   useEffect(() => {
-    if(globalThis.textWeight === props.weight) setSelected(true);
+    if (globalThis.textWeight === props.weight) setSelected(true);
   }, []);
-
 
   return (
     <Pressable
+      accessibilityLabel={props.text}
       flexDirection="row"
-      margin={2}
+      margin={3}
       onPress={() => {
         saveTextWeight(props.weight);
-        setTimeout(() => {props.reloadSettings()}, 400);
+        setTimeout(() => {
+          props.reloadSettings();
+        }, 400);
       }}
     >
       <AnimatedBox

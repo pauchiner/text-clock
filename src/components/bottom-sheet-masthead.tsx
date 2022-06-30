@@ -6,6 +6,7 @@ import ColorModeToggle from "./color-mode-toggle";
 const Masthead = () => {
   return (
     <Box
+      accessibilityLabel="settings menu"
       bg={useColorModeValue("muted.100", "muted.900")}
       flexDirection="row"
       justifyContent="space-between"
@@ -27,7 +28,7 @@ const Masthead = () => {
             Text O'Clock
           </Text>
           <Text fontWeight={300} fontStyle="italic" fontSize="md">
-            Version 1.00
+            Version 1.03
           </Text>
         </Box>
       </Box>

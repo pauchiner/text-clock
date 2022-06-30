@@ -1,13 +1,11 @@
 import React from "react";
-import {moderateScale} from "react-native-size-matters";
+import { moderateScale } from "react-native-size-matters";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withSpring,
 } from "react-native-reanimated";
-import {
-  Text,
-} from "native-base";
+import { Text } from "native-base";
 
 interface Props {
   isActive: boolean;
@@ -29,11 +27,12 @@ const Word = (props: Props) => {
   return (
     <AnimatedText
       {...props}
+      accessibilityLabel={props.isActive ? props.text : ""}
       style={animatedTextStyle}
       fontFamily="body"
       fontWeight={globalThis.textWeight}
-      fontSize={moderateScale(30, 0.5)}
-      padding={3}
+      fontSize={moderateScale(30, 1.8)}
+      padding={moderateScale(8, 2)}
     >
       {props.text}
     </AnimatedText>

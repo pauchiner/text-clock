@@ -18,7 +18,7 @@ const RateAppButton = () => {
   };
 
   return (
-    <Pressable onPress={onPress}>
+    <Pressable accessibilityLabel="rate us" onPress={onPress}>
       <Box alignItems="center" padding={2} flexDirection="row">
         <Icon
           color={useColorModeValue("dark.50", "light.50")}

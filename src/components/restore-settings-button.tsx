@@ -78,6 +78,7 @@ const RestoreSettingsButton = ({reloadSettings}: any) => {
 
   return (
     <Pressable
+      accessibilityLabel="restore settings"
       paddingBottom={5}
       alignItems="center"
       flexDirection="row"

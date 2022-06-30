@@ -34,7 +34,7 @@ const TextWeightPicker = ({ reloadSettings }: any) => {
         setIsOpen={setShowModal}
         reloadSettings={reloadSettings}
       />
-      <Box alignItems="center" flexDirection="row">
+      <Box accessibilityLabel={"text weight: " + textWeightName} alignItems="center" flexDirection="row">
         <Icon
           color={useColorModeValue("dark.50", "light.50")}
           margin={2}

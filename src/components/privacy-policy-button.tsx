@@ -26,7 +26,7 @@ const PrivacyPolicyButton = () => {
 
 
   return (
-    <Pressable onPress={openLinkAlert}>
+    <Pressable accessibilityLabel={"privacy policy"} onPress={openLinkAlert}>
       <Box alignItems="center" padding={2} flexDirection="row">
         <Icon
           color={useColorModeValue("dark.50", "light.50")}

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { moderateScale } from "react-native-size-matters";
 import { Stack, Icon, IconButton, useColorModeValue } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
@@ -14,11 +15,13 @@ export default function SettingsButton(props: { onPress: any }) {
       zIndex={99}
     >
       <IconButton
+        accessibilityLabel="settings button"
+        size={moderateScale(50, 1.2)}
         onPress={props.onPress}
         icon={
           <Icon
             color={useColorModeValue("dark.50", globalThis.colorTheme + ".300")}
-            size={10}
+            size={moderateScale(30, 1.9)}
             as={MaterialIcons}
             name="settings"
           />

@@ -48,6 +48,7 @@ const TextWeightModal = (props: Props) => {
       }}
     >
       <AnimatedBox
+        accessibilityLabel="choose a size"
         alignSelf="center"
         width="55%"
         style={animatedBoxStyle}
@@ -56,9 +57,9 @@ const TextWeightModal = (props: Props) => {
         <Box>
           <Background
             bg={useColorModeValue("muted.100", "muted.700")}
-            rounded="lg"
+            rounded={23}
           >
-            <Text alignSelf="center" fontSize="xl" fontWeight={600} margin={1}>
+            <Text alignSelf="center" fontSize="xl" fontWeight={600} margin={2}>
               Choose a size
             </Text>
             <Divider />

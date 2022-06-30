@@ -52,6 +52,7 @@ const ColorItem = ({ reloadSettings, colorChart, color }: Props) => {
 
   return (
     <Pressable
+      accessibilityLabel={color}
       onPress={() => {
         setPressed(true);
         saveTheme(colorChart);

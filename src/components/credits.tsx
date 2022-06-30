@@ -14,11 +14,12 @@ const Credits = () => {
       flexDirection="row"
       justifyContent="center"
     >
-      <Text bottom={2} fontSize="xl" fontWeight={300}>
+      <Text accessibilityLabel="Pau García Chiner" bottom={2} fontSize="xl" fontWeight={300}>
         Pau García Chiner ®
       </Text>
       <Box paddingLeft={2} flexDirection="row">
         <Pressable
+          accessibilityLabel="linkedin"
           margin={2}
           onPress={() => {
             Linking.openURL("https://es.linkedin.com/in/pauchiner");
@@ -32,6 +33,7 @@ const Credits = () => {
           </Svg>
         </Pressable>
         <Pressable
+          accessibilityLabel="github"
           margin={2}
           onPress={() => {
             Linking.openURL("https://github.com/pauchiner");

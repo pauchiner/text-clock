@@ -1,12 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Text, Box, Divider, useColorModeValue, Icon } from "native-base";
 import ColorItem from "./color-theme-item";
 
-const ColorThemePicker = ({reloadSettings}: any) => {
+const ColorThemePicker = ({ reloadSettings }: any) => {
   return (
     <>
-      <Box flexDirection="row" alignItems={"center"}>
+      <Box
+        accessibilityLabel={"choose a color theme"}
+        flexDirection="row"
+        alignItems={"center"}
+      >
         <Icon
           color={useColorModeValue("dark.50", "light.50")}
           margin={2}
