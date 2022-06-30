@@ -26,6 +26,7 @@
         "backgroundColor": "#fff",
         "foregroundImage": "./src/assets/icon.png"
       },
+      "versionCode": 2,
       "package": "com.pauchiner.textclock"
     }
   }
